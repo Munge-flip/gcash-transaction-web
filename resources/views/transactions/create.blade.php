@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GCash Tracker - Add Transaction</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
     <header class="header">
@@ -16,7 +16,8 @@
     </nav>
 
     <div class="container">
-        <form action="#" method="POST" class="form">
+        <form action="{{route('transactions.store')}}" method="POST" class="form">
+            @csrf
             <h2 class="form__title">Transaction Details</h2>
 
             <div class="form__group">

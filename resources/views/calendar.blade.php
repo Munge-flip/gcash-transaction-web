@@ -12,7 +12,7 @@
     </header>
 
     <nav class="nav">
-        <a href="index.html" class="nav__button nav__button--secondary">← Back to Home</a>
+        <a href="{{route('dashboard')}}" class="nav__button nav__button--secondary">← Back to Home</a>
     </nav>
 
     <div class="container">

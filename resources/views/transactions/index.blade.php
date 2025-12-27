@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GCash Tracker - January 15, 2025</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
     <header class="header">
@@ -13,8 +13,8 @@
     </header>
 
     <nav class="nav">
-        <a href="monthly-calendar.html" class="nav__button nav__button--secondary">← Back to Calendar</a>
-        <a href="add-transaction.html" class="nav__button nav__button--success">+ Add Transaction</a>
+        <a href="{{route('calendar', ['year' => now()->year, 'month' => now()->format('m')])}}" class="nav__button nav__button--secondary">← Back to Calendar</a>
+        <a href="{{route('transactions.create')}}" class="nav__button nav__button--success">+ Add Transaction</a>
     </nav>
 
     <div class="container">
