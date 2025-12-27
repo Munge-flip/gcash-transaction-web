@@ -64,4 +64,31 @@ class TransactionController extends Controller
         }
         return floor($amount / 500) * 10;
     }
+
+    public function edit(Transaction $transaction)
+    {
+        return view('transactions.edit', compact('transaction'));
+    }
+    public function update(Request $request, Transaction $transaction) {
+        $validated = $request->validate([
+            'date' => ['required', 'date'],
+            'time_period' => ['required', 'string'],
+            'type' => ['required', 'string'],
+            'amount' => ['required', 'numeric', 'min:0'],
+            'status' => ['required', 'string'],
+        ]);
+        
+        $fee = $this->calculateFee($validated['amount']);
+
+        $transaction->update([
+            'date' => $validated['date'],
+            'time_period' => $validated['time_period'],
+            'type' => $validated['type'],
+            'amount' => $validated['amount'],
+            'status' => $validated['status'],
+            'fee' => $fee,
+        ]);
+
+        return redirect()->route('transactions.index', ['date' => $validated['date']]);
+    }
 }
