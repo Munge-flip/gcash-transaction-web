@@ -68,7 +68,7 @@
 
             <div class="form__actions">
                 <button type="submit" class="form__submit">Add Transaction</button>
-                <a href="daily-view-a.html" class="form__cancel">Cancel</a>
+                <a href="{{route('transactions.index', ['date' => $date])}}" class="form__cancel">Cancel</a>
             </div>
         </form>
     </div>
