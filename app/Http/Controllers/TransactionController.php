@@ -25,7 +25,7 @@ class TransactionController extends Controller
             'status' => ['required', 'string'],
         ]);
 
-        $fee = 0;
+        $fee = $this->calculateFee($validated['amount']);
 
         Transaction::create([
             'date' => $validated['date'],
@@ -37,5 +37,19 @@ class TransactionController extends Controller
         ]);
 
         return redirect()->route('transactions.index');
+    }
+
+    private function calculateFee($amount)
+    {
+        if ($amount < 100) {
+            return 5;
+        }
+        if ($amount < 500) {
+            return 10;
+        }
+        if ($amount < 1000) {
+            return 20;
+        }
+        return floor($amount / 500) * 10;
     }
 }
