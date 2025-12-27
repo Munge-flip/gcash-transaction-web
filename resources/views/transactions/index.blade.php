@@ -46,144 +46,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Example transaction rows - remove when converting to Laravel -->
+                    @forelse($transactions as $transaction)
                     <tr class="transaction-table__row">
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__time">Morning</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__type">Cash In</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__amount">₱500.00</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__profit">₱20.00</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-item__status transaction-item__status--claimed">Claimed</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <div class="transaction-table__actions">
-                                <a href="edit-transaction.html" class="transaction-item__edit">Edit</a>
-                                <form action="#" method="POST" style="display: inline;">
-                                    <button type="submit" class="transaction-item__delete">Delete</button>
-                                </form>
-                            </div>
-                        </td>
+                        <td class="transaction-table__cell"> <span class="transaction-table__time"> {{$transaction->time_period}} </span> </td>
+                        <td class="transaction-table__cell"> <span class="transaction-table__type"> {{$transaction->type}} </span></td>
+                        <td class="transaction-table__cell"> <span class="transaction-table__amount"> {{$transaction->amount}} </span> </td>
+                        <td class="transaction-table__cell"> <span class="transaction-table__profit"> {{$transaction->fee}} </span> </td>
+                        <td class="transaction-table__cell"> <span class="transaction-item__status transaction-item__status--claimed"> {{$transaction->status}} </span> </td>
                     </tr>
-
-                    <tr class="transaction-table__row">
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__time">Morning</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__type">Cash Out</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__amount">₱1,000.00</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__profit">₱20.00</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-item__status transaction-item__status--claimed">Claimed</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <div class="transaction-table__actions">
-                                <a href="edit-transaction.html" class="transaction-item__edit">Edit</a>
-                                <form action="#" method="POST" style="display: inline;">
-                                    <button type="submit" class="transaction-item__delete">Delete</button>
-                                </form>
-                            </div>
-                        </td>
+                    @empty
+                    <tr>
+                        <td colspan="5">No transactions found for this day.</td>
                     </tr>
-
-                    <tr class="transaction-table__row">
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__time">Afternoon</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__type">Cash In</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__amount">₱1,500.00</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__profit">₱30.00</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-item__status transaction-item__status--unclaimed">Unclaimed</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <div class="transaction-table__actions">
-                                <a href="edit-transaction.html" class="transaction-item__edit">Edit</a>
-                                <form action="#" method="POST" style="display: inline;">
-                                    <button type="submit" class="transaction-item__delete">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr class="transaction-table__row">
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__time">Afternoon</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__type">Cash Out</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__amount">₱2,500.00</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__profit">₱50.00</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-item__status transaction-item__status--claimed">Claimed</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <div class="transaction-table__actions">
-                                <a href="edit-transaction.html" class="transaction-item__edit">Edit</a>
-                                <form action="#" method="POST" style="display: inline;">
-                                    <button type="submit" class="transaction-item__delete">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr class="transaction-table__row">
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__time">Evening</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__type">Cash In</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__amount">₱800.00</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-table__profit">₱20.00</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <span class="transaction-item__status transaction-item__status--unclaimed">Unclaimed</span>
-                        </td>
-                        <td class="transaction-table__cell">
-                            <div class="transaction-table__actions">
-                                <a href="edit-transaction.html" class="transaction-item__edit">Edit</a>
-                                <form action="#" method="POST" style="display: inline;">
-                                    <button type="submit" class="transaction-item__delete">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
+                    @endforelse
                 </tbody>
             </table>
-
-            <!-- Empty state - show when no transactions -->
-            <!-- <div class="empty-state">
-                <p class="empty-state__text">No transactions recorded for this day</p>
-                <a href="add-transaction.html" class="nav__button nav__button--success">+ Add First Transaction</a>
-            </div> -->
         </div>
     </div>
 </body>

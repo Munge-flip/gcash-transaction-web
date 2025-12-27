@@ -7,9 +7,19 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('transactions.index');
+        $date = $request->query('date');
+
+        $query = Transaction::query();
+
+        if ($date) {
+            $query->where('date', $date);
+        }
+
+        $transactions = $query->orderBy('created_at', 'desc')->get();
+
+        return view('transactions.index', compact('transactions', 'date'));
     }
     public function create()
     {
