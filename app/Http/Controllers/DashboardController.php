@@ -9,7 +9,14 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard');
+        $months = [];
+        for ($m = 1; $m <= 12; $m++) {
+            $months[] = [
+                'number' => str_pad($m, 2, '0', STR_PAD_LEFT),
+                'name' => date('F', mktime(0, 0, 0, $m, 1)),
+            ];
+        }
+        return view('dashboard', compact('months'));
     }
     public function calendar($year, $month)
     {
