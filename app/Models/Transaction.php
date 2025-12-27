@@ -12,5 +12,6 @@ class Transaction extends Model
         'type',
         'amount',
         'status',
+        'fee',
     ];
 }

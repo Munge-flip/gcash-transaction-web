@@ -17,7 +17,10 @@ return new class extends Migration
             $table->date('date');
             $table->string('time_period');
             $table->string('type');
-            $table->integer('amount');
+
+            $table->decimal('amount', 10, 2);
+            $table->decimal('fee', 10, 2)->default(0);
+            
             $table->string('status');
             $table->timestamps();
         });
