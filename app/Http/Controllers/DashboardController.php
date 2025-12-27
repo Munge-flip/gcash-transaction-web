@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -20,9 +21,25 @@ class DashboardController extends Controller
     }
     public function calendar($year, $month)
     {
-        $transaction = Transaction::whereYear('created_at', $year)
+        $allTransactions = Transaction::whereYear('created_at', $year)
             ->whereMonth('created_at', $month)
             ->get();
-        return view('calendar', compact('transaction', 'year', 'month'));
+
+        $daysInMonth = Carbon::createFromDate($year, $month)->daysInMonth;
+        $days = [];
+
+        for ($i = 1; $i <= $daysInMonth; $i++) {
+            $currentDate = sprintf('%04d-%02d-%02d', $year, $month, $i);
+
+            $dayTransactions = $allTransactions->where('date', $currentDate);
+
+            $days[] = [
+                'number' => $i,
+                'date'   => $currentDate,
+                'expenses' => $dayTransactions->sum('amount'),
+                'profit'   => $dayTransactions->sum('fee'),
+            ];
+        }
+        return view('calendar', compact('days', 'year', 'month'));
     }
 }
