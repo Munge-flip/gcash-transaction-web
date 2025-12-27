@@ -21,9 +21,11 @@ class TransactionController extends Controller
 
         return view('transactions.index', compact('transactions', 'date'));
     }
-    public function create()
+    public function create(Request $request)
     {
-        return view('transactions.create');
+        $date = $request->query('date', date('Y-m-d'));
+
+        return view('transactions.create', compact('date'));
     }
     public function store(Request $request)
     {

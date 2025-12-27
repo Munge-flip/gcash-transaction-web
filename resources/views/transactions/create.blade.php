@@ -22,7 +22,7 @@
 
             <div class="form__group">
                 <label for="date" class="form__label">Date</label>
-                <input type="date" id="date" name="date" class="form__input" required value="2025-01-15">
+                <input type="date" id="date" name="date" class="form__input" required value="{{ old('date', $date) }}">
             </div>
 
             <div class="form__group">

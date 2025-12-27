@@ -16,7 +16,7 @@
         <a href="{{ route('calendar', ['year' => $date ? date('Y', strtotime($date)) : now()->year, 'month' => $date ? date('m', strtotime($date)) : now()->format('m')]) }}" class="nav__button nav__button--secondary">
             ← Back to Calendar
         </a>
-        <a href="{{ route('transactions.create') }}" class="nav__button nav__button--success">
+        <a href="{{ route('transactions.create', ['date' => $date]) }}" class="nav__button nav__button--success">
             + Add Transaction
         </a>
     </nav>
