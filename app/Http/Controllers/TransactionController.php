@@ -48,7 +48,7 @@ class TransactionController extends Controller
             'fee' => $fee,
         ]);
 
-        return redirect()->route('transactions.index');
+        return redirect()->route('transactions.index', ['date' => $validated['date']]);
     }
 
     private function calculateFee($amount)
