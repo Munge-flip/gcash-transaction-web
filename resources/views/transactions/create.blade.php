@@ -12,7 +12,7 @@
     </header>
 
     <nav class="nav">
-        <a href="daily-view-a.html" class="nav__button nav__button--secondary">← Back to Daily View</a>
+        <a href="{{route('transactions.index', ['date' => $date])}}" class="nav__button nav__button--secondary">← Back to Daily View</a>
     </nav>
 
     <div class="container">
